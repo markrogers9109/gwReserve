@@ -1,0 +1,25 @@
+h3.ui.header {
+	margin-bottom: 3em;
+}
+
+.headerDecorator {
+	color: green;
+	font-size: 1.8em;
+	border-color: gainsboro;
+	background-color: gainsboro;
+	padding: .2em;
+	transform-origin: bottom left;
+	transform: rotate(340deg);
+	position: absolute;
+	top: 2em;
+	left: 4.6em;
+	box-shadow: 0 1px 2px #1d2832;
+}
+
+.ui.justified.container {
+	margin-top: 3em;
+}
+
+.content {
+	margin-top: 1em;
+}

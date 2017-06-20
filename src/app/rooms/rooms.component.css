@@ -1,0 +1,20 @@
+.room {
+	background-color: rgba(17, 27, 28, .4);
+	height: 100%;
+	padding-top: 7em;
+	padding-bottom: 10em;
+	box-shadow: 0 5px 10px rgba(20, 20, 20, .6);
+}
+
+.room .ui.padded.grid {
+	opacity: .1;
+	transform: translate(0,-20px);
+	transition-property: transform, opacity;
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.room .ui.padded.grid.tranIn {
+	opacity: 1;
+	transform: none;
+}

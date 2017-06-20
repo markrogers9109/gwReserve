@@ -1,0 +1,8 @@
+.ui.inverted.segment.navigationContainer {
+	background-color: rgba(17, 27, 28, .8);
+}
+
+.ui.inverted.secondary.pointing.menu.navigation {
+	border: none;
+	height: 110px;
+}

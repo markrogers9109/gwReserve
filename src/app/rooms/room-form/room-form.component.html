@@ -1,0 +1,52 @@
+<h1 class="ui inverted header">{{ room?.name }}</h1>
+
+<form class="ui roomForm form" (ngSubmit)="reservationSubmission()" [ngClass]="{ 'error' : !myForm.valid && myForm.submitted }" #myForm="ngForm" novalidate>
+	<div class="ui large inverted form">
+		<div class="two fields">
+			<div class="field">
+				<label>Reserve For:</label>
+				<select name="reserveReason" [ngModel]="form.reserveReason" required>
+					<option *ngFor="let reason of reasons" [value]="reason">{{ reason }}</option>
+				</select>
+			</div>
+		</div>
+		<div class="two fields">
+			<div class="field">
+				<label>Start Time:</label>
+				<input name="startTime" type="time" [ngModel]="form.startTime" required>
+			</div>
+			<div class="field">
+				<label>End Time:</label>
+				<input name="endTime" type="time" [ngModel]="form.endTime" required>
+			</div>
+		</div>
+		<div class="two fields">
+			<div class="field">
+				<label>Person to Contact:</label>
+				<input name="email1" type="email" [ngModel]="form.email1" required email>
+			</div>
+			<div class="field">
+				<label>Person to Contact (confirm):</label>
+				<input name="email2" type="email" [ngModel]="form.email2" [pattern]="myForm.controls.email1?.value" required email>
+			</div>
+		</div>
+		<div class="inline field">
+			<label>I agree to be clean and good to the room:</label>
+			<input name="isAgreed" type="checkbox" [ngModel]="form.isAgreed" required>
+		</div>
+		<div class="ui error message">
+			<div class="header">This entry has a few errors</div>
+
+			<!--<ul class="list">
+				<li></li>
+			</ul>-->
+		</div>
+		<div class="fields">
+			<div class="field">
+				<button type="submit" class="ui big positive submit button" [disabled]="!myForm.valid">Submit</button>
+			</div>
+		</div>
+
+		<pre>{{ myForm.value | json }}</pre>
+	</div>
+</form>

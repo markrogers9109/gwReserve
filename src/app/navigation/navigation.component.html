@@ -1,0 +1,21 @@
+<div class="ui container">
+	<div class="ui inverted segment navigationContainer">
+		<div class="ui inverted secondary pointing huge menu navigation">
+
+			<a *ngFor="let navItem of navigationService.getNavigation()"
+				routerLink="{{ navItem.url }}"
+				routerLinkActive="active"
+				ngClass="{{ navItem.color }}"
+				class="item">
+				{{ navItem.title }}
+			</a>
+
+			<div class="right menu">
+				<div class="item">
+					<gw-login></gw-login>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

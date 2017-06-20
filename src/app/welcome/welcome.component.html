@@ -1,0 +1,11 @@
+<div class="ui justified container">
+	<div class="ui segment">
+		<div class="ui attached segment">
+			<h1 class="ui dividing header">WELCOME</h1>
+			<p>Welcome to Geekwise Angular; please login and schedule a room</p>
+		</div>
+		<div *ngIf="isLoginNeeded" class="ui bottom attached error message">
+			<i class="sign in big icon"></i> You attempted to use this application without signing in
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="login">
+	<div class="ui middle aligned center aligned grid buttonGrid">
+		<div class="two column row">
+			<div class="column">
+				<img class="ui tiny right floated image" *ngIf="loggedInUser" [src]="loggedInUser?.photoURL">
+			</div>
+			<div class="column">
+				<h1 class="ui header">{{ loggedInUser?.displayName }}</h1>
+				<button class="ui left attached button" (click)="login()" [disabled]="loggedInUser">Login</button>
+				<button class="ui right attached button" (click)="logout()" [disabled]="!loggedInUser">Logout</button>
+			</div>
+		</div>
+	</div>
+</div>

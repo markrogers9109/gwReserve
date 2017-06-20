@@ -1,0 +1,12 @@
+<div class="ui room container">
+	<div class="ui padded grid" [ngClass]="{ tranIn : room.picture !== '' }">
+		<div class="row">
+			<div class="six wide column">
+				<img class="ui medium circular centered image" [src]="room.picture">
+			</div>
+			<div class="ten wide column">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+</div>
