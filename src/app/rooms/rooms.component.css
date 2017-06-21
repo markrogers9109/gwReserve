@@ -18,3 +18,11 @@
 	opacity: 1;
 	transform: none;
 }
+
+.toggleButtons button {
+	margin-bottom: 1em;
+}
+
+.toggleButtons hr {
+	margin-bottom: 3em;
+}

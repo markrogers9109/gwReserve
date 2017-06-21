@@ -3,15 +3,13 @@ import { Router } from "@angular/router";
 
 import { LoginService } from "./../services/login.service";
 
-import { IUser } from "./../interfaces/IUser";
-
 @Component({
 	selector: "gw-login",
 	templateUrl: "./login.component.html",
 	styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-	public loggedInUser:IUser;
+	public loggedInUser;
 
 	constructor(
 		private router:Router,
@@ -19,27 +17,24 @@ export class LoginComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.setLoggedInUser();
+		this.loginService.getLoggedInUser().subscribe({
+			next: loggedInUser => {
+				this.loggedInUser = loggedInUser;
+				this._refreshRoute();
+			}
+		});
+	}
+
+	private _refreshRoute() {
+		const navigateToUrlCommand = [ this.router.url.startsWith("/room/") ? "" : this.router.url ];
+		this.router.navigate(navigateToUrlCommand);
 	}
 
 	login() {
 		this.loginService.login();
-		this.setLoggedInUser();
-		this.refreshRoute();
 	}
 
 	logout() {
 		this.loginService.logout();
-		this.setLoggedInUser();
-		this.refreshRoute();
-	}
-
-	private setLoggedInUser() {
-		this.loggedInUser = this.loginService.getLoggedInUser();
-	}
-
-	private refreshRoute() {
-		const navigateToUrlCommand = [ this.router.url.startsWith("/room/") ? "" : this.router.url ];
-		this.router.navigate(navigateToUrlCommand);
 	}
 }

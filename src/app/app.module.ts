@@ -3,9 +3,14 @@ import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { HttpModule } from "@angular/http";
 
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from "angularfire2/auth";
+
 import { RoomsModule } from "./rooms/rooms.module";
 
 import { AppRoutingModule, routedComponents } from "./app.routing.module";
+
+import { environment } from "./../environments/environment";
 
 import { AppComponent } from "./app.component";
 import { AsyncPatternsComponent } from './exercises/async-patterns/async-patterns.component';
@@ -23,6 +28,8 @@ import { RoomService } from "./services/room.service";
 		BrowserModule,
 		CommonModule,
 		HttpModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFireAuthModule,
 
 		// our modules
 		RoomsModule,

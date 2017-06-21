@@ -1,0 +1,27 @@
+{
+    "halo": {
+        "id": "halo",
+        "name": "Halo",
+        "picture": "halo.jpg"
+    },
+    "sonic": {
+        "id": "sonic",
+        "name": "Sonic",
+        "picture": "sonic.jpg"
+    },
+    "zelda": {
+        "id": "zelda",
+        "name": "Zelda",
+        "picture": "zelda.jpg"
+    },
+    "starfox": {
+        "id": "starfox",
+        "name": "Star Fox",
+        "picture": "starfox.jpg"
+    },
+    "simcity": {
+        "id": "simcity",
+        "name": "Sim City",
+        "picture": "simcity.jpg"
+    }
+}

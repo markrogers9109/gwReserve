@@ -53,11 +53,25 @@ export class RoomFormComponent implements OnInit, CanComponentDeactivate {
 		console.log(this.myForm);
 	}
 
+	getErrors() {
+		const errorList = [];
+
+		const controls = this.myForm.controls;
+
+		for(let controlKey in controls) {
+			let currentControlErrors = controls[controlKey].errors;
+
+			for(let errorKey in currentControlErrors) {
+				errorList.push(`${controlKey} error: ${errorKey}`);
+			}
+		}
+
+		return errorList;
+	}
+
 	canDeactivate() {
 		return this.myForm.dirty ? confirm("You appear to have unsaved work.  Continue?") : true;
 	}
 
-	reservationSubmission() { 
-		console.log(this.myForm);
-	 }
+	reservationSubmission() { }
 }

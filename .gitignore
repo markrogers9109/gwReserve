@@ -1,2 +1,5 @@
 node_modules
 semantic
+functions
+database.rules.json
+firebase.json

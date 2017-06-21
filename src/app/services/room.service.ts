@@ -54,31 +54,31 @@ export class RoomService {
 					halo: {
 						id: "halo",
 						name: "Halo",
-						picture: "https://drive.google.com/open?id=0B5Iz7ToBVrwURmhBdFJpcXZDSVE"
+						picture: "halo.jpg"
 					},
 					sonic: {
 						id: "sonic",
 						name: "Sonic",
-						picture: 'https://drive.google.com/open?id=0B5Iz7ToBVrwUN1ZkalNxc2M0RUk'
+						picture: 'sonic.jpg'
 					},
 					zelda: {
 						id: "zelda",
 						name: "Zelda",
-						picture: 'https://drive.google.com/open?id=0B5Iz7ToBVrwUeHl5NVRvQVZtbG8'
+						picture: 'zelda.jpg'
 					},
 					starfox: {
 						id: "starfox",
 						name: "Star Fox",
-						picture: 'https://drive.google.com/open?id=0B5Iz7ToBVrwUVzFQbmlZbHc4bHc'
+						picture: 'starfox.jpg'
 					},
 					simcity: {
 						id: "simcity",
 						name: "Sim City",
-						picture: 'https://drive.google.com/open?id=0B5Iz7ToBVrwUMjdEeWUyWENkd3c'
+						picture: 'simcity.jpg'
 					}
-				});
+				}).toPromise();
 			})
-			.then(this.fetchRoomsFromDB);
+			.then(() => this.fetchRoomsFromDB());
 	}
 
 	writeRoomReservation(id, reservation) {
@@ -90,12 +90,6 @@ export class RoomService {
 	}
 
 	deleteRoomReservation(id, reservation) {
-		if (reservation.email.toLowerCase() !== this.loginService.getLoggedInUser().email.toLowerCase()) {
-			alert("You may not delete this reservation because you don't own it; shame on you!");
-
-			return;
-		}
-
 		const url = this.getRoomReservationsUrl(id, reservation.startTime, reservation.id);
 
 		return this.http.delete(url);

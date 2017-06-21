@@ -18,6 +18,7 @@ import "rxjs/add/operator/map";
 export class RoomsComponent implements OnInit, CanComponentDeactivate {
 	public id: number;
 	public room: IRoom;
+	public isLoading: boolean;
 
 	// ActivatedRoute is provided by RouterModule
 	constructor(
@@ -53,6 +54,18 @@ export class RoomsComponent implements OnInit, CanComponentDeactivate {
 
 	canDeactivate():boolean {
 		return window.confirm("Are you ready to leave this room?");
+	}
+
+	resetDB($event:MouseEvent) {
+		if (!$event.ctrlKey) return alert("Hold CTRL to activate this");
+
+		if (!confirm("Think a moment:  This will reset the class form data.  Are you SURE?")) return;
+
+		this.isLoading = true;
+
+		this.roomService.resetRoomsToDB().then(() => {
+			this.isLoading = false;
+		});
 	}
 
 	private defaultRoom() {

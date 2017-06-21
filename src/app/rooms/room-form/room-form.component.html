@@ -1,6 +1,6 @@
 <h1 class="ui inverted header">{{ room?.name }}</h1>
 
-<form class="ui roomForm form" (ngSubmit)="reservationSubmission()" [ngClass]="{ 'error' : !myForm.valid && myForm.submitted }" #myForm="ngForm" novalidate>
+<form class="ui roomForm form" (ngSubmit)="reservationSubmission(myForm.value)" [ngClass]="{ 'error' : !myForm.valid && myForm.submitted }" #myForm="ngForm" novalidate>
 	<div class="ui large inverted form">
 		<div class="two fields">
 			<div class="field">
@@ -27,7 +27,7 @@
 			</div>
 			<div class="field">
 				<label>Person to Contact (confirm):</label>
-				<input name="email2" type="email" [ngModel]="form.email2" [pattern]="myForm.controls.email1?.value" required email>
+				<input name="email2" type="email" [ngModel]="form.email2" [pattern]="myForm.controls?.email1?.value" #email2="ngModel" required email>
 			</div>
 		</div>
 		<div class="inline field">
@@ -35,18 +35,15 @@
 			<input name="isAgreed" type="checkbox" [ngModel]="form.isAgreed" required>
 		</div>
 		<div class="ui error message">
-			<div class="header">This entry has a few errors</div>
-
-			<!--<ul class="list">
-				<li></li>
-			</ul>-->
+			<div *ngFor="let error of getErrors()">
+				{{ error | json }}
+			</div>
 		</div>
 		<div class="fields">
 			<div class="field">
-				<button type="submit" class="ui big positive submit button" [disabled]="!myForm.valid">Submit</button>
+				<button type="submit" class="ui big positive submit button">Submit</button>
 			</div>
 		</div>
-
 		<pre>{{ myForm.value | json }}</pre>
 	</div>
 </form>
